@@ -1,4 +1,5 @@
 import tasksRepository from "../repositories/tasks.repository.js";
+import Task from "../models/Task.js";
 
 class TasksService {
 
@@ -15,6 +16,12 @@ class TasksService {
         }
 
         return task;
+    }
+
+    async create(data){
+        const task = new Task(data)
+
+        return await tasksRepository.create(task)
     }
 }
 

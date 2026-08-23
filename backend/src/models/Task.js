@@ -1,4 +1,4 @@
-class Tasks{
+class Task{
     constructor({
         title,
         description,
@@ -10,4 +10,4 @@ class Tasks{
     }
 }
 
-export default Tasks
+export default Task

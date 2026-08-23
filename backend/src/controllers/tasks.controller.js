@@ -20,6 +20,20 @@ class TasksController {
             next(error);
         }
     }
+
+    async create(req, res, next){
+        try {
+            
+            await tasksServices.create(req.body)
+
+            res.status(201).json({
+                message: "Tarefa cadastrada com sucesso!"
+            })
+
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 export default new TasksController();

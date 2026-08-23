@@ -6,5 +6,6 @@ const router = express()
 
 router.get('/', tasksController.getAll)
 router.get('/:id', validateTaskId, tasksController.getById)
+router.post('/', tasksController.create)
 
 export default router
