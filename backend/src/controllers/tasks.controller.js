@@ -50,6 +50,20 @@ class TasksController {
             next(error)
         }
     }
+
+    async deleteTask(req, res, next){
+        try {
+            const {id} = req.params
+
+            await tasksServices.deleteTask(id)
+
+            res.status(200).json({
+                message: "Tarefa deletada com sucesso!"
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 export default new TasksController();

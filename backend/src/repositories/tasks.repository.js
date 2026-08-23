@@ -37,6 +37,12 @@ class TasksRepository{
 
         return result
     }
+
+    async deleteTask(id){
+        const [result] = await pool.query("DELETE FROM tasks WHERE id = ?", [id])
+
+        return result
+    }
 }
 
 export default new TasksRepository()
