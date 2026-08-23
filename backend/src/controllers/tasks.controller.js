@@ -23,13 +23,29 @@ class TasksController {
 
     async create(req, res, next){
         try {
+            const task = req.body
             
-            await tasksServices.create(req.body)
+            await tasksServices.create(task)
 
             res.status(201).json({
                 message: "Tarefa cadastrada com sucesso!"
             })
 
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async update(req, res, next){
+        try {
+            const {id} = req.params
+            const data = req.body
+
+            await tasksServices.update(id, data)
+
+            res.status(200).json({
+                message: "Tarefa atualizada com sucesso!"
+            })
         } catch (error) {
             next(error)
         }

@@ -23,6 +23,14 @@ class TasksService {
 
         return await tasksRepository.create(task)
     }
+
+    async update(id, data){
+
+        const task = new Task(data)
+        
+
+        return await tasksRepository.update(id, task)
+    }
 }
 
 export default new TasksService();

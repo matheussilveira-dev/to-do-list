@@ -23,6 +23,20 @@ class TasksRepository{
 
         return result.insertId
     }
+
+    async update(id, task){
+        const {
+            title,
+            description,
+            completed
+        } = task
+
+        const [result] = await pool.query('UPDATE tasks SET title = ?, description = ?, completed = ? WHERE id = ?', [title, description, completed, id])
+
+        console.log(result)
+
+        return result
+    }
 }
 
 export default new TasksRepository()
