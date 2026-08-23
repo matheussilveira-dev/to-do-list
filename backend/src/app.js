@@ -1,11 +1,12 @@
 import express from 'express'
-import router from './routes/tasks.routes.js'
+import tasksRouter from './routes/tasks.routes.js'
 import erroHandler from './middleware/errorHandler.js'
 
 const app = express()
 
 app.use(express.json())
 
+app.use('/tasks', tasksRouter)
 
 app.use(erroHandler)
 
