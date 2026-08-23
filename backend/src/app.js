@@ -1,6 +1,6 @@
 import express from 'express'
 import tasksRouter from './routes/tasks.routes.js'
-import erroHandler from './middleware/errorHandler.js'
+import erroHandler from './middleware/errorHandler.middleware.js'
 
 const app = express()
 
