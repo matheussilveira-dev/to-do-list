@@ -24,18 +24,39 @@ class TasksRepository{
         return result.insertId
     }
 
-    async update(id, task){
-        const {
-            title,
-            description,
-            completed
-        } = task
+    async update(id, task) {
 
-        const [result] = await pool.query('UPDATE tasks SET title = ?, description = ?, completed = ? WHERE id = ?', [title, description, completed, id])
+    console.log(task);
+    console.log("title:", Object.hasOwn(task, "title"));
+    console.log("description:", Object.hasOwn(task, "description"));
+    console.log("completed:", Object.hasOwn(task, "completed"));   
 
-        console.log(result)
+    const fields = [];
+    const values = [];
 
-        return result
+    if (Object.hasOwn(task, "title")) {
+        fields.push("title = ?");
+        values.push(task.title);
+    }
+
+    if (Object.hasOwn(task, "description")) {
+        fields.push("description = ?");
+        values.push(task.description);
+    }
+
+    if (Object.hasOwn(task, "completed")) {
+        fields.push("completed = ?");
+        values.push(task.completed);
+    }
+
+    values.push(id);
+
+    const [result] = await pool.query(
+        `UPDATE tasks SET ${fields.join(", ")} WHERE id = ?`,
+        values
+    );
+
+    return result;
     }
 
     async deleteTask(id){

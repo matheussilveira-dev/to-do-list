@@ -35,6 +35,7 @@ export const createTaskSchema = z.object({
         .boolean({
             error: 'Completed deve ser true ou false'
         })
+        .default(false)
         .optional()
 })
 

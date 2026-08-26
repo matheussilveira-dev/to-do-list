@@ -13,7 +13,7 @@ export const validate = (schema, location) => {
             })
         }
 
-        req.body = result.data
+        req[location] = result.data
 
         next()
     }
