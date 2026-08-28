@@ -5,21 +5,48 @@ import TasksList from "../components/TasksList"
 
 function Tasks() {
 
-    const [count, setCount] = useState(0)
+    const [tasks, setTasks] = useState([
+    {
+        id: 1,
+        title: "Estudar React",
+        description: "Aprender componentes e props."
+    },
+    {
+        id: 2,
+        title: "Estudar Node",
+        description: "Continuar a API."
+    },
+    {
+        id: 3,
+        title: "Estudar MySQL",
+        description: "Praticar consultas."
+    }
+    ])
+
+    function addTask() {
+    setTasks([
+        ...tasks,
+        {
+            id: 4,
+            title: "Nova tarefa",
+            description: "Essa tarefa foi adicionada pelo React."
+        }
+    ]);
+}
 
     return(
         <main>
             <h1 className="tasks_title">To-Do List</h1>
 
-            <p>Cliques: {count}</p>
-
-            <button onClick={() => setCount(count + 1)}>
-                Clique
-            </button>
-
             <TasksForm/>
 
-            <TasksList/>
+            <TasksList
+                tasks={tasks}
+            />
+
+            <button onClick={addTask}>
+                Adicionar tarefa de teste
+            </button>
         </main>
     )
 }

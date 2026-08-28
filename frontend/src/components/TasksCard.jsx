@@ -1,6 +1,6 @@
 
 
-function TasksCard({title, description}){
+function TasksCard({id, title, description}){
 
     
     return(
@@ -8,6 +8,8 @@ function TasksCard({title, description}){
             <h2 className="card_title">{title}</h2>
 
             <p className="card_description">{description}</p>
+
+            <p className="card_id">{id}</p>
 
             <button className="card_button-edit">Editar</button>
             <button className="card_button-delete">Excluir</button>
