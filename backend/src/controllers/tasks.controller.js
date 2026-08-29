@@ -25,11 +25,9 @@ class TasksController {
         try {
             const task = req.body
             
-            await tasksServices.create(task)
+            const createdTask = await tasksServices.create(task);
 
-            res.status(201).json({
-                message: "Tarefa cadastrada com sucesso!"
-            })
+            res.status(201).json({"message": "Tarefa cadastrada com sucesso", data: createdTask})
 
         } catch (error) {
             next(error)

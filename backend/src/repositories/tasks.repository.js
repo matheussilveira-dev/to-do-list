@@ -21,7 +21,7 @@ class TasksRepository{
 
         const [result] = await pool.query('INSERT INTO tasks(title, description, completed) VALUES (?, ?, ?)', [title, description, completed])
 
-        return result.insertId
+        return await this.getById(result.insertId)
     }
 
     async update(id, task) {
