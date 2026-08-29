@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
 function TasksForm({onAddTask}) {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-
-    useEffect(() => {
-    console.log("Tasks foi carregado");
-}, []);
 
     function handleSubmit(event){
         event.preventDefault()

@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios";
 
 import TasksForm from "../components/TasksForm"
 import TasksList from "../components/TasksList"
@@ -22,6 +23,14 @@ function Tasks() {
         description: "Praticar consultas."
     }
     ])
+
+    useEffect(() => {
+    axios.get('http://localhost:3010/tasks')
+    .then(response => {
+        console.log(response.data)
+    })
+    }, []);
+
 
     function handleAddTask(title, description) {
         setTasks([
