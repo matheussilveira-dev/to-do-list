@@ -6,28 +6,13 @@ import TasksList from "../components/TasksList"
 
 function Tasks() {
 
-    const [tasks, setTasks] = useState([
-    {
-        id: 1,
-        title: "Estudar React",
-        description: "Aprender componentes e props."
-    },
-    {
-        id: 2,
-        title: "Estudar Node",
-        description: "Continuar a API."
-    },
-    {
-        id: 3,
-        title: "Estudar MySQL",
-        description: "Praticar consultas."
-    }
-    ])
+    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
     axios.get('http://localhost:3010/tasks')
     .then(response => {
         console.log(response.data)
+        setTasks(response.data)
     })
     }, []);
 
