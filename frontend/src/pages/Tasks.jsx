@@ -23,30 +23,28 @@ function Tasks() {
     }
     ])
 
-    function addTask() {
-    setTasks([
+    function handleAddTask(title, description) {
+        setTasks([
         ...tasks,
         {
             id: 4,
-            title: "Nova tarefa",
-            description: "Essa tarefa foi adicionada pelo React."
+            title: title,
+            description: description
         }
     ]);
-}
+    }
+
 
     return(
         <main>
             <h1 className="tasks_title">To-Do List</h1>
 
-            <TasksForm/>
+            <TasksForm onAddTask={handleAddTask}/>
 
             <TasksList
                 tasks={tasks}
             />
 
-            <button onClick={addTask}>
-                Adicionar tarefa de teste
-            </button>
         </main>
     )
 }
