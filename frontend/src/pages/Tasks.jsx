@@ -17,15 +17,14 @@ function Tasks() {
     }, []);
 
 
-    function handleAddTask(title, description) {
-        setTasks([
-        ...tasks,
-        {
-            id: 4,
-            title: title,
-            description: description
-        }
-    ]);
+    async function handleAddTask(title, description) {
+        const response = await axios.post("http://localhost:3010/tasks", 
+            {
+                title: title,
+                description: description
+            }
+        )
+        console.log(response.data)
     }
 
 
