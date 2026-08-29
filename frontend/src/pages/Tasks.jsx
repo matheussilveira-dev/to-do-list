@@ -24,7 +24,10 @@ function Tasks() {
                 description: description
             }
         )
-        console.log(response.data)
+        setTasks([
+            ...tasks,
+            response.data.data
+        ])
     }
 
 
