@@ -42,13 +42,21 @@ function Tasks() {
     async function handleUpdateTask(title, description) {
         const response = await axios.put(
         `http://localhost:3010/tasks/${editingTask.id}`,
-        {
-            title,
-            description
-        }
-    );
+            {
+                title,
+                description
+            }
+        );
 
-    console.log(response.data);
+        const updatedTask = response.data.data 
+
+        setTasks(
+            tasks.map(task => 
+                task.id === updatedTask.id
+                    ? updatedTask
+                    : task
+            )
+        )
     }
 
 
