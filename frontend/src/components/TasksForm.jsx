@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
-function TasksForm({onAddTask}) {
+function TasksForm({onAddTask, editingTask, onUpdateTask}) {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -9,11 +9,28 @@ function TasksForm({onAddTask}) {
     function handleSubmit(event){
         event.preventDefault()
 
-        onAddTask(title, description)
+        if(editingTask){
+
+            onUpdateTask(title, description)
+
+        }else{
+
+            onAddTask(title, description)
+            
+        }
+
+        
 
         setTitle("");
         setDescription("");
     }
+
+    useEffect(() => {
+        if (editingTask) {
+            setTitle(editingTask.title);
+            setDescription(editingTask.description);
+        }
+    }, [editingTask]);
 
     return(
         <form action="" className="tasks_form" onSubmit={handleSubmit}>
@@ -25,6 +42,7 @@ function TasksForm({onAddTask}) {
             <input type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
             <button type="submit">Adicionar</button>
+            
         </form>
     )
 }

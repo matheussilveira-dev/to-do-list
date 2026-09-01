@@ -7,6 +7,7 @@ import TasksList from "../components/TasksList"
 function Tasks() {
 
     const [tasks, setTasks] = useState([])
+    const [editingTask, setEditingTask] = useState(null);
 
     useEffect(() => {
     axios.get('http://localhost:3010/tasks')
@@ -30,15 +31,40 @@ function Tasks() {
         ])
     }
 
+    function handleEditTask(task) {
+        setEditingTask(task)
+    }
+
+    useEffect(() => {
+        console.log("editingTask mudou:", editingTask);
+    }, [editingTask]);
+
+    async function handleUpdateTask(title, description) {
+        const response = await axios.put(
+        `http://localhost:3010/tasks/${editingTask.id}`,
+        {
+            title,
+            description
+        }
+    );
+
+    console.log(response.data);
+    }
+
 
     return(
         <main>
             <h1 className="tasks_title">To-Do List</h1>
 
-            <TasksForm onAddTask={handleAddTask}/>
+            <TasksForm 
+                onAddTask={handleAddTask}
+                editingTask={editingTask}
+                onUpdateTask={handleUpdateTask}
+            />
 
             <TasksList
                 tasks={tasks}
+                onEditTask={handleEditTask}
             />
 
         </main>

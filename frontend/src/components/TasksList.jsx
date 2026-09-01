@@ -2,7 +2,7 @@
 
 import TasksCard from "./TasksCard"
 
-function TasksList({tasks}){
+function TasksList({tasks, onEditTask}){
 
     return(
         <section className="tasks_list">
@@ -11,9 +11,8 @@ function TasksList({tasks}){
             {tasks.map(task => (
                 <TasksCard
                     key={task.id}
-                    id={task.id}
-                    title={task.title}
-                    description={task.description}
+                    task={task}
+                    onEditTask={onEditTask}
                 />
             ))}
         </section>
