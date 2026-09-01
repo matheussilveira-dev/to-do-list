@@ -26,11 +26,6 @@ class TasksRepository{
 
     async update(id, task) {
 
-    console.log(task);
-    console.log("title:", Object.hasOwn(task, "title"));
-    console.log("description:", Object.hasOwn(task, "description"));
-    console.log("completed:", Object.hasOwn(task, "completed"));   
-
     const fields = [];
     const values = [];
 
@@ -56,7 +51,8 @@ class TasksRepository{
         values
     );
 
-    return result;
+    return await this.getById(id);
+    
     }
 
     async deleteTask(id){

@@ -39,10 +39,11 @@ class TasksController {
             const {id} = req.params
             const data = req.body
 
-            await tasksServices.update(id, data)
+            const updatedTask = await tasksServices.update(id, data)
 
             res.status(200).json({
-                message: "Tarefa atualizada com sucesso!"
+                message: "Tarefa atualizada com sucesso!",
+                data: updatedTask
             })
         } catch (error) {
             next(error)
