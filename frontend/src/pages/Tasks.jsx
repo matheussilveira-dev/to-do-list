@@ -12,7 +12,6 @@ function Tasks() {
     useEffect(() => {
     axios.get('http://localhost:3010/tasks')
     .then(response => {
-        console.log(response.data)
         setTasks(response.data)
     })
     }, []);
@@ -35,10 +34,6 @@ function Tasks() {
         setEditingTask(task)
     }
 
-    useEffect(() => {
-        console.log("editingTask mudou:", editingTask);
-    }, [editingTask]);
-
     async function handleUpdateTask(title, description) {
         const response = await axios.put(
         `http://localhost:3010/tasks/${editingTask.id}`,
@@ -57,6 +52,18 @@ function Tasks() {
                     : task
             )
         )
+
+        setEditingTask(null)
+    }
+
+    async function handleDeleteTask(id) {
+        await axios.delete(
+            `http://localhost:3010/tasks/${id}`
+        );
+
+        setTasks(
+            tasks.filter(task => task.id !== id)
+        );
     }
 
 
@@ -73,6 +80,7 @@ function Tasks() {
             <TasksList
                 tasks={tasks}
                 onEditTask={handleEditTask}
+                onDeleteTask={handleDeleteTask}
             />
 
         </main>

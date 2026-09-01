@@ -1,6 +1,6 @@
 
 
-function TasksCard({task, onEditTask}){
+function TasksCard({task, onEditTask, onDeleteTask}){
 
     
     return(
@@ -12,7 +12,7 @@ function TasksCard({task, onEditTask}){
             <p className="card_id">{task.id}</p>
 
             <button className="card_button-edit" onClick={() => onEditTask(task)}>Editar</button>
-            <button className="card_button-delete">Excluir</button>
+            <button className="card_button-delete" onClick={() => onDeleteTask(task.id)}>Excluir</button>
         </article>
     )
 }

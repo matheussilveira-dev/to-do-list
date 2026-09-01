@@ -16,19 +16,17 @@ function TasksForm({onAddTask, editingTask, onUpdateTask}) {
         }else{
 
             onAddTask(title, description)
-            
+
         }
-
-        
-
-        setTitle("");
-        setDescription("");
     }
 
     useEffect(() => {
         if (editingTask) {
             setTitle(editingTask.title);
             setDescription(editingTask.description);
+        }else{
+            setTitle("");
+        setDescription("");
         }
     }, [editingTask]);
 
