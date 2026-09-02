@@ -9,11 +9,26 @@ function Tasks() {
     const [tasks, setTasks] = useState([])
     const [editingTask, setEditingTask] = useState(null);
 
+    const [error, setError] = useState(null)
+
     useEffect(() => {
-    axios.get('http://localhost:3010/tasks')
-    .then(response => {
-        setTasks(response.data)
-    })
+        async function getTasks() {
+            try {
+
+                const response = await axios.get('http://localhost:3010/tasks')
+                
+
+                setTasks(response.data)
+
+                setError(null)
+            } catch (error) {
+                setError("Não foi possível carregar as tarefas!")
+            }
+            
+        }
+
+        getTasks()
+    
     }, []);
 
 
@@ -76,6 +91,8 @@ function Tasks() {
                 editingTask={editingTask}
                 onUpdateTask={handleUpdateTask}
             />
+            
+            {error && <p>{error}</p>}
 
             <TasksList
                 tasks={tasks}
