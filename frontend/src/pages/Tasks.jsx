@@ -33,16 +33,26 @@ function Tasks() {
 
 
     async function handleAddTask(title, description) {
-        const response = await axios.post("http://localhost:3010/tasks", 
-            {
-                title: title,
-                description: description
-            }
-        )
-        setTasks([
-            ...tasks,
-            response.data.data
-        ])
+        try {
+            
+            const response = await axios.post("http://localhost:3010/tasks", 
+                {
+                    title: title,
+                    description: description
+                }
+            )
+
+            setTasks([
+                ...tasks,
+                response.data.data
+            ])
+
+            setError(null)
+
+        } catch (error) {
+            setError("Não foi possível adicionar a nova tarefa!")
+        }
+        
     }
 
     function handleEditTask(task) {
@@ -50,7 +60,9 @@ function Tasks() {
     }
 
     async function handleUpdateTask(title, description) {
-        const response = await axios.put(
+        try {
+            
+            const response = await axios.put(
         `http://localhost:3010/tasks/${editingTask.id}`,
             {
                 title,
@@ -69,16 +81,36 @@ function Tasks() {
         )
 
         setEditingTask(null)
+
+        setError(null)
+
+        } catch (error) {
+            
+            setError("Não foi possível atualizar a tarefa!")
+
+        }
+        
     }
 
     async function handleDeleteTask(id) {
-        await axios.delete(
+        try {
+            
+            await axios.delete(
             `http://localhost:3010/tasks/${id}`
-        );
+            );
 
-        setTasks(
-            tasks.filter(task => task.id !== id)
-        );
+            setTasks(
+                tasks.filter(task => task.id !== id)
+            );
+
+            setError(null)
+
+        } catch (error) {
+            
+            setError("Não foi possível excluir essa tarefa!")
+
+        }
+        
     }
 
 
