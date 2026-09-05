@@ -38,8 +38,8 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
     }, [editingTask]);
 
     return(
-        <form action="" className="tasks_form" onSubmit={handleSubmit}>
-            <h2 className="form_title"></h2>
+        <form className="tasks_form" onSubmit={handleSubmit}>
+            <h2 className="form_title">Adicione uma nova tarefa!</h2>
 
             <input type="text" name="title" id="title" placeholder="Título da tarefa:" className="form_input-title" value={title} onChange={(e) => setTitle(e.target.value)}/>
 

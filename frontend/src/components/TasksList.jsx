@@ -1,14 +1,15 @@
-
-
 import TasksCard from "./TasksCard"
 
-function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask}){
+function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onToggleTask, error}){
 
     return(
         <section className="tasks_list">
             <h2 className="list_title">Minhas Tarefas</h2>
 
-            {tasks.map(task => (
+            {tasks.length === 0 && !error && loading.operation !== "get"? (
+                <p>Nenhuma tarefa cadastrada.</p>
+            ) : (
+                tasks.map(task => (
                 <TasksCard
                     key={task.id}
                     task={task}
@@ -16,8 +17,10 @@ function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask}){
                     onDeleteTask={onDeleteTask}
                     loading={loading}
                     editingTask={editingTask}
+                    onToggleTask={onToggleTask}
                 />
-            ))}
+            )))}
+            
         </section>
     )
 }

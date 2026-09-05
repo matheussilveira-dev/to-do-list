@@ -167,6 +167,48 @@ function Tasks() {
         
     }
 
+    async function handleToggleTask(id, completed) {
+
+        setLoading({
+            operation: "toggle",
+            id: id
+        });
+
+        try {
+            
+            const response = await axios.put(
+            `http://localhost:3010/tasks/${id}`,
+            {
+                completed: completed
+            }
+        )
+
+        const updatedTask = response.data.data
+
+        setTasks(tasks
+            .map(task =>
+            task.id === updatedTask.id
+                ? updatedTask
+                : task
+            )
+        )
+
+        setError(null)
+
+        } catch (error) {
+            
+            setError("Não foi possível marcar essa tarefa como concluída!")
+
+        } finally{
+
+            setLoading({
+                operation: null,
+                id: null
+            });
+
+        }
+    }
+
 
     return(
         <main>
@@ -190,6 +232,8 @@ function Tasks() {
                 onDeleteTask={handleDeleteTask}
                 loading={loading}
                 editingTask={editingTask}
+                onToggleTask={handleToggleTask}
+                error={error}
             />
 
         </main>

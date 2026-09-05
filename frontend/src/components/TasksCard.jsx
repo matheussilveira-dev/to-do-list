@@ -1,11 +1,18 @@
 
 
-function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask}){
+function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onToggleTask}){
 
     
     return(
         <article className="tasks_card">
-            <h2 className="card_title">{task.title}</h2>
+            <input
+                type="checkbox"
+                checked={task.completed}
+                onChange={() => onToggleTask(task.id, !task.completed)}
+                disabled={loading.operation === "toggle" && loading.id === task.id}
+            />
+
+            <h2 className={`card_title ${task.completed ? "completed" : ""}`}>{task.title}</h2>
 
             <p className="card_description">{task.description}</p>
 
