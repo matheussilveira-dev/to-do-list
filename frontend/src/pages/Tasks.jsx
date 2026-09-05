@@ -115,10 +115,12 @@ function Tasks() {
         setEditingTask(null)
 
         setError(null)
+        return true
 
         } catch (error) {
             
             setError("Não foi possível atualizar a tarefa!")
+            return false
 
         }finally{
             setLoading({

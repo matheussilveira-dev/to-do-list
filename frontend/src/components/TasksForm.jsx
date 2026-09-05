@@ -11,7 +11,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
         if(editingTask){
 
-            onUpdateTask(title, description)
+            await onUpdateTask(title, description)
 
         }else{
 
@@ -26,6 +26,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
     }
 
     useEffect(() => {
+
         if (editingTask) {
             setTitle(editingTask.title);
             setDescription(editingTask.description);
@@ -33,6 +34,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
             setTitle("");
             setDescription("");
         }
+
     }, [editingTask]);
 
     return(
@@ -44,7 +46,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
             <input type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
-            <button type="submit">
+            <button type="submit" disabled={loading.operation === "update"}>
             {loading.operation === "update"
                 ? "Atualizando..."
                 : editingTask
