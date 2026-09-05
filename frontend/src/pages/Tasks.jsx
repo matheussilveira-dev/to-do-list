@@ -10,9 +10,11 @@ function Tasks() {
     const [editingTask, setEditingTask] = useState(null);
 
     const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function getTasks() {
+            setLoading(true)
             try {
 
                 const response = await axios.get('http://localhost:3010/tasks')
@@ -23,6 +25,8 @@ function Tasks() {
                 setError(null)
             } catch (error) {
                 setError("Não foi possível carregar as tarefas!")
+            }finally{
+                setLoading(false)
             }
             
         }
@@ -125,6 +129,7 @@ function Tasks() {
             />
             
             {error && <p>{error}</p>}
+            {loading && <p>Carregando tarefas...</p>}
 
             <TasksList
                 tasks={tasks}
