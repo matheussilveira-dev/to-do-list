@@ -6,7 +6,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault()
 
         if(editingTask){
@@ -15,7 +15,12 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
         }else{
 
-            onAddTask(title, description)
+            const success = await onAddTask(title, description)
+            
+            if (success) {
+                setTitle("");
+                setDescription("");
+            }
 
         }
     }

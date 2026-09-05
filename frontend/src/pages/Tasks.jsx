@@ -65,9 +65,11 @@ function Tasks() {
             ])
 
             setError(null)
+            return true;
 
         } catch (error) {
             setError("Não foi possível adicionar a nova tarefa!")
+            return false;
         }finally{
             setLoading({
                 operation: null,
