@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 
-function TasksForm({onAddTask, editingTask, onUpdateTask, loading}) {
+function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}) {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -26,7 +26,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading}) {
             setDescription(editingTask.description);
         }else{
             setTitle("");
-        setDescription("");
+            setDescription("");
         }
     }, [editingTask]);
 
@@ -45,7 +45,12 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading}) {
                 : editingTask
                     ? "Atualizar tarefa"
                     : "Adicionar tarefa"}
-</button>
+            </button>
+            {editingTask && (
+            <button type="button" onClick={onCancelEdit}>
+                Cancelar
+            </button>
+            )}
             
         </form>
     )

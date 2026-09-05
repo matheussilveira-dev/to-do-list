@@ -81,6 +81,10 @@ function Tasks() {
         setEditingTask(task)
     }
 
+    function handleCancelEdit() {
+        setEditingTask(null);
+    }
+
     async function handleUpdateTask(title, description) {
         setLoading({
             operation: "update",
@@ -124,6 +128,12 @@ function Tasks() {
     }
 
     async function handleDeleteTask(id) {
+
+        const confirmDelete = window.confirm("Tem certeza que deseja excluir esta tarefa?");
+        if (!confirmDelete) {
+            return;
+        }
+
         setLoading({
             operation: 'delete',
             id: id
@@ -163,11 +173,12 @@ function Tasks() {
                 editingTask={editingTask}
                 onUpdateTask={handleUpdateTask}
                 loading={loading}
+                onCancelEdit={handleCancelEdit}
             />
             
             {error && <p>{error}</p>}
-            {loading === 'get' && <p>Carregando tarefas...</p>}
-            {loading === "create" && <p>Adicionando tarefa...</p>}
+            {loading.operation === 'get' && <p>Carregando tarefas...</p>}
+            {loading.operation === "create" && <p>Adicionando tarefa...</p>}
 
             <TasksList
                 tasks={tasks}
