@@ -1,6 +1,6 @@
 
 
-function TasksCard({task, onEditTask, onDeleteTask}){
+function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask}){
 
     
     return(
@@ -11,8 +11,15 @@ function TasksCard({task, onEditTask, onDeleteTask}){
 
             <p className="card_id">{task.id}</p>
 
-            <button className="card_button-edit" onClick={() => onEditTask(task)}>Editar</button>
-            <button className="card_button-delete" onClick={() => onDeleteTask(task.id)}>Excluir</button>
+            <button className="card_button-edit" onClick={() => onEditTask(task)}>
+                {editingTask?.id === task.id ? "Editando..." : "Editar"}
+            </button>
+
+            <button className="card_button-delete" onClick={() => onDeleteTask(task.id)} disabled={loading.operation === "delete" && loading.id === task.id}>
+                {loading.operation === "delete" && loading.id === task.id
+                    ? "Excluindo..."
+                    : "Excluir"}
+            </button>
         </article>
     )
 }

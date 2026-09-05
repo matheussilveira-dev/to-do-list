@@ -2,7 +2,7 @@
 
 import TasksCard from "./TasksCard"
 
-function TasksList({tasks, onEditTask, onDeleteTask}){
+function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask}){
 
     return(
         <section className="tasks_list">
@@ -14,6 +14,8 @@ function TasksList({tasks, onEditTask, onDeleteTask}){
                     task={task}
                     onEditTask={onEditTask}
                     onDeleteTask={onDeleteTask}
+                    loading={loading}
+                    editingTask={editingTask}
                 />
             ))}
         </section>

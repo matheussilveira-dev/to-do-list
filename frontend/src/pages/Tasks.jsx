@@ -10,11 +10,17 @@ function Tasks() {
     const [editingTask, setEditingTask] = useState(null);
 
     const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState({
+        operation: null,
+        id: null
+    })
 
     useEffect(() => {
         async function getTasks() {
-            setLoading(true)
+            setLoading({
+                operation: "get",
+                id: null
+            });
             try {
 
                 const response = await axios.get('http://localhost:3010/tasks')
@@ -26,7 +32,10 @@ function Tasks() {
             } catch (error) {
                 setError("Não foi possível carregar as tarefas!")
             }finally{
-                setLoading(false)
+                setLoading({
+                    operation: null,
+                    id: null
+                });
             }
             
         }
@@ -37,6 +46,10 @@ function Tasks() {
 
 
     async function handleAddTask(title, description) {
+        setLoading({
+            operation: "create",
+            id: null
+        });
         try {
             
             const response = await axios.post("http://localhost:3010/tasks", 
@@ -55,6 +68,11 @@ function Tasks() {
 
         } catch (error) {
             setError("Não foi possível adicionar a nova tarefa!")
+        }finally{
+            setLoading({
+                operation: null,
+                id: null
+            });
         }
         
     }
@@ -64,6 +82,10 @@ function Tasks() {
     }
 
     async function handleUpdateTask(title, description) {
+        setLoading({
+            operation: "update",
+            id: editingTask.id
+        });
         try {
             
             const response = await axios.put(
@@ -92,11 +114,20 @@ function Tasks() {
             
             setError("Não foi possível atualizar a tarefa!")
 
+        }finally{
+            setLoading({
+                operation: null,
+                id: null
+            });
         }
         
     }
 
     async function handleDeleteTask(id) {
+        setLoading({
+            operation: 'delete',
+            id: id
+        })
         try {
             
             await axios.delete(
@@ -113,6 +144,11 @@ function Tasks() {
             
             setError("Não foi possível excluir essa tarefa!")
 
+        }finally{
+            setLoading({
+                operation: null,
+                id: null
+            });
         }
         
     }
@@ -126,15 +162,19 @@ function Tasks() {
                 onAddTask={handleAddTask}
                 editingTask={editingTask}
                 onUpdateTask={handleUpdateTask}
+                loading={loading}
             />
             
             {error && <p>{error}</p>}
-            {loading && <p>Carregando tarefas...</p>}
+            {loading === 'get' && <p>Carregando tarefas...</p>}
+            {loading === "create" && <p>Adicionando tarefa...</p>}
 
             <TasksList
                 tasks={tasks}
                 onEditTask={handleEditTask}
                 onDeleteTask={handleDeleteTask}
+                loading={loading}
+                editingTask={editingTask}
             />
 
         </main>
