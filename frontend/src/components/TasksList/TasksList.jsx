@@ -1,4 +1,4 @@
-import TasksCard from "./TasksCard"
+import TasksCard from "../TasksCard/TasksCard"
 
 function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onToggleTask, error}){
 

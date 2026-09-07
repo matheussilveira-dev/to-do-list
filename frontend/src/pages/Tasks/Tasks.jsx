@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from "axios";
 
-import TasksForm from "../components/TasksForm"
-import TasksList from "../components/TasksList"
+import TasksForm from "../../components/TasksForm/TasksForm"
+import TasksList from "../../components/TasksList/TasksList"
 
 function Tasks() {
 
