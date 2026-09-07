@@ -4,6 +4,8 @@ import axios from "axios";
 import TasksForm from "../../components/TasksForm/TasksForm"
 import TasksList from "../../components/TasksList/TasksList"
 
+import "./Tasks.css"
+
 function Tasks() {
 
     const [tasks, setTasks] = useState([])
@@ -211,8 +213,9 @@ function Tasks() {
 
 
     return(
-        <main>
-            <h1 className="tasks_title">To-Do List</h1>
+        <main className="main">
+            <div className="main__container">
+                <h1 className="tasks_title">To-Do List</h1>
 
             <TasksForm 
                 onAddTask={handleAddTask}
@@ -223,8 +226,8 @@ function Tasks() {
             />
             
             {error && <p>{error}</p>}
-            {loading.operation === 'get' && <p>Carregando tarefas...</p>}
-            {loading.operation === "create" && <p>Adicionando tarefa...</p>}
+            {loading.operation === 'get' && <p className="load__loading-tasks">Carregando tarefas...</p>}
+            {loading.operation === "create" && <p className="load__add-tasks">Adicionando tarefa...</p>}
 
             <TasksList
                 tasks={tasks}
@@ -235,7 +238,7 @@ function Tasks() {
                 onToggleTask={handleToggleTask}
                 error={error}
             />
-
+            </div>
         </main>
     )
 }
