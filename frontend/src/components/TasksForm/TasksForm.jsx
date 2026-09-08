@@ -44,7 +44,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
             <input type="text" name="title" id="title" placeholder="Título da tarefa:" className="form_input-title" value={title} onChange={(e) => setTitle(e.target.value)}/>
 
 
-            <input type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+            <textarea type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
             <button type="submit" disabled={loading.operation === "update"}>
             {loading.operation === "update"

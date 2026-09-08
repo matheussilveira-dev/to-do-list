@@ -6,6 +6,8 @@ import TasksList from "../../components/TasksList/TasksList"
 
 import "./Tasks.css"
 
+import { CircleCheckBig } from "lucide-react";
+
 function Tasks() {
 
     const [tasks, setTasks] = useState([])
@@ -215,7 +217,16 @@ function Tasks() {
     return(
         <main className="main">
             <div className="main__container">
-                <h1 className="tasks_title">To-Do List</h1>
+                <div className="main__title-box">
+                    <div className="icon">
+                        <CircleCheckBig className="title-icon"/>
+                    </div>
+                    <div className="title-main">
+                        <h1 className="tasks_title">Minhas tarefas</h1>
+                        <p className="tasks_text-description">Organize seu dia, conquiste suas metas.</p>
+                    </div>
+                </div>
+                
 
             <TasksForm 
                 onAddTask={handleAddTask}

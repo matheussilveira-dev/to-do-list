@@ -9,4 +9,14 @@ body,
 #root{
     width: 100%;
     height: 100%;
+    font-family: var(--font-primary);
+}
+
+h1, h2, h3{
+    color: var(--text-primary);
+    
+}
+
+p{
+    color: var(--text-secondary);
 }

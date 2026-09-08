@@ -1,0 +1,13 @@
+:root {
+    --primary: #3B82F6;
+    --text-primary: #1F2937;
+    --text-secondary: #64748B;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --background: #F1F5F9;
+    --surface: #FFFFFF;
+    --border: #E2E8F0;
+
+    --font-primary: "Inter", sans-serif;
+}

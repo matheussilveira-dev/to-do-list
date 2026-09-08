@@ -13,6 +13,30 @@
   align-items: center;
 }
 
+.main__title-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon{
+   background-color: #3B82F6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-icon{
+  width: 45px;
+  height: 45px;
+  stroke-width: 2;
+  color: white;
+}
+
 .tasks_title{
-  font-size: 5rem;
+  font-size: 3rem;
 }
