@@ -21,3 +21,39 @@
 .form_input-description{
     min-height: 90px;
 }
+
+.form__buttons-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 15px;
+}
+
+.form__button-add,
+.form__button-clear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+.form__button-add{
+    background-color: var(--primary );
+    color: white;
+    font-size: 1.05rem;
+}
+
+.add-icon{
+    color: white;
+}
+
+.form__button-clear{
+    background-color: "#E2E8F0";
+    color: #475569;
+    font-size: 1.05rem
+}
