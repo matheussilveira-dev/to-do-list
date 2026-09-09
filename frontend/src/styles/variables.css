@@ -1,13 +1,18 @@
 :root {
-    --primary: #3B82F6;
-    --text-primary: #1F2937;
+    --primary: #0F766E;
+
+    --text-primary: #134E4A;
     --text-secondary: #64748B;
+
     --success: #22C55E;
     --warning: #F59E0B;
     --danger: #EF4444;
-    --background: #F1F5F9;
-    --surface: #FFFFFF;
-    --border: #E2E8F0;
+
+    --background: #F0FDFA;
+    --surface: #F8FAFC;
+    --border: #CBD5E1;
+
+    --white: #ffffff;
 
     --font-primary: "Inter", sans-serif;
 }

@@ -1,0 +1,23 @@
+.tasks_form{
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 700px;
+    gap: 20px;
+}
+
+.form_input-title,
+.form_input-description{
+    border: 1px solid var(--border);
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.form_input-description{
+    min-height: 90px;
+}

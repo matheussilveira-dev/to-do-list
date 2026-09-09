@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import "./TasksForm.css"
 
 function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}) {
 
@@ -25,6 +25,11 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
         }
     }
 
+    function clearForm(){
+        setDescription("")
+        setTitle("")
+    }
+
     useEffect(() => {
 
         if (editingTask) {
@@ -46,18 +51,18 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
             <textarea type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
-            <button type="submit" disabled={loading.operation === "update"}>
+            <div className="form__buttons-container">
+                <button className="form__button-add" type="submit" disabled={loading.operation === "update"}>
             {loading.operation === "update"
                 ? "Atualizando..."
                 : editingTask
                     ? "Atualizar tarefa"
                     : "Adicionar tarefa"}
             </button>
-            {editingTask && (
-            <button type="button" onClick={onCancelEdit}>
-                Cancelar
+            <button className="form__button-clear" onClick={editingTask ? onCancelEdit : clearForm} type="button">
+            {editingTask ? "Cancelar" : "Limpar"}
             </button>
-            )}
+            </div>
             
         </form>
     )

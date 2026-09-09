@@ -1,12 +1,12 @@
 .main{
   max-width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main__container{
+  padding: 100px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -21,7 +21,7 @@
 }
 
 .icon{
-   background-color: #3B82F6;
+   background-color: var(--primary);
     border: none;
     border-radius: 8px;
     padding: 10px;
@@ -34,9 +34,9 @@
   width: 45px;
   height: 45px;
   stroke-width: 2;
-  color: white;
+  color: var(--white);
 }
 
 .tasks_title{
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
