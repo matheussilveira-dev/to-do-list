@@ -48,10 +48,24 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
         <form className="tasks_form" onSubmit={handleSubmit}>
             <h2 className="form_title">Adicione uma nova tarefa!</h2>
 
-            <input type="text" name="title" id="title" placeholder="Título da tarefa:" className="form_input-title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+            <div className="form__input-container">
+
+                <div className="icon_input-container">
+                    <ListTodo className="title_input-icon"/>
+                </div>
+                <input type="text" name="title" id="title" placeholder="Título da tarefa:" className="form_input-title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+
+            </div>
 
 
-            <textarea type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+            <div className="form__input-container">
+
+                <div className="icon_input-container">
+                    <FileText className="description_input-icon"/>
+                </div>
+                <textarea type="text" name="description" id="description" placeholder="Descrição da tarefa:" className="form_input-description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+
+            </div>
 
             <div className="form__buttons-container">
                 <button className="form__button-add" type="submit" disabled={loading.operation === "update"}>
@@ -62,7 +76,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
                         ? "Atualizar tarefa"
                         : "Adicionar tarefa"}
                 </button>
-                <button className="form__button-clear" onClick={editingTask ? onCancelEdit : clearForm} type="button">
+                <button className={`form__button-clear ${editingTask ? "editing" : ""}`} onClick={editingTask ? onCancelEdit : clearForm} type="button">
                     {editingTask ? "Cancelar" : "Limpar"}
                 </button>
             </div>

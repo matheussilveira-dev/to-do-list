@@ -3,12 +3,14 @@
 
     --text-primary: #134E4A;
     --text-secondary: #64748B;
+    --text-button: #475569;
 
     --success: #22C55E;
     --warning: #F59E0B;
     --danger: #EF4444;
 
     --background: #F0FDFA;
+    --background-button-clear: #E2E8F0;
     --surface: #F8FAFC;
     --border: #CBD5E1;
 
