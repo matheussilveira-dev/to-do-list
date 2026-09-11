@@ -4,6 +4,7 @@ function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onTog
 
     return(
         <section className="tasks_list">
+
             <h2 className="list_title">Minhas Tarefas</h2>
 
             {tasks.length === 0 && !error && loading.operation !== "get"? (

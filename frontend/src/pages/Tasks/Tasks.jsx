@@ -3,6 +3,7 @@ import axios from "axios";
 
 import TasksForm from "../../components/TasksForm/TasksForm"
 import TasksList from "../../components/TasksList/TasksList"
+import TasksSummary from "../../components/TasksSummary/TasksSummary";
 
 import "./Tasks.css"
 
@@ -18,6 +19,12 @@ function Tasks() {
         operation: null,
         id: null
     })
+
+    const totalTasks = tasks.length
+
+    const pendingTasks = tasks.filter(task => !task.completed).length
+
+    const completedTasks = tasks.filter(task => task.completed).length
 
     useEffect(() => {
         async function getTasks() {
@@ -239,6 +246,12 @@ function Tasks() {
             {error && <p>{error}</p>}
             {loading.operation === 'get' && <p className="load__loading-tasks">Carregando tarefas...</p>}
             {loading.operation === "create" && <p className="load__add-tasks">Adicionando tarefa...</p>}
+
+            <TasksSummary
+                totalTasks={totalTasks}
+                pendingTasks={pendingTasks}
+                completedTasks={completedTasks}
+            />
 
             <TasksList
                 tasks={tasks}

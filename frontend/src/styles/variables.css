@@ -14,6 +14,14 @@
     --surface: #F8FAFC;
     --border: #CBD5E1;
 
+     --summary-total-background: #DBEAFE;
+    --summary-total-text: #0F766E;
+
+    --summary-completed-background: #DCFCE7;
+    --summary-completed-text: #16A34A;
+
+    --summary-pending-background: #FFEDD5;
+    --summary-pending-text: #EA580C;
     --white: #ffffff;
 
     --font-primary: "Inter", sans-serif;

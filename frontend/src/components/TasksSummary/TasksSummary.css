@@ -1,0 +1,49 @@
+.tasks__summary-container{
+    display: flex;
+    width: 100%; 
+    justify-content:space-between;
+    padding: 10px 30px;
+}
+
+.tasks-total,
+.tasks-pending,
+.tasks-completed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.tasks-total{
+    background-color: var(--summary-total-background);
+    border-radius: 40px;
+    padding: 10px 40px;
+}
+
+.total-title, .total-number{
+    color: var(--summary-total-text);
+    font-size: 1.1rem;
+}
+
+.tasks-pending{
+    background-color: var(--summary-pending-background);
+    border-radius: 40px;
+    padding: 10px 40px;
+}
+
+.pending-title, .pending-number{
+    color: var(--summary-pending-text);
+    font-size: 1.1rem;
+}
+
+.tasks-completed{
+    background-color: var(--summary-completed-background);
+    border-radius: 40px;
+    padding: 10px 40px;
+}
+
+.completed-title, .completed-number{
+    color: var(--summary-completed-text);
+    font-size: 1.1rem;
+}
+
