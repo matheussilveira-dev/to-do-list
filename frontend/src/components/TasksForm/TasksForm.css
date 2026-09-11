@@ -1,7 +1,7 @@
 .tasks_form{
     background-color: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 30px;
 
     display: flex;
@@ -80,6 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 
     padding: 10px 30px;
     border-radius: 5px;
@@ -94,10 +95,22 @@
     font-size: 1.05rem;
 }
 
-.add-icon{
+.add-icon, .save-icon{
     color: white;
 }
 
+.save-icon{
+    display: none;
+    stroke-width: 1.8;
+}
+
+.save-icon.editing{
+    display: block;
+}
+
+.add-icon.editing{
+    display: none;
+}
 .form__button-clear{
     background-color: var(--background-button-clear);
     color: var(--text-button);

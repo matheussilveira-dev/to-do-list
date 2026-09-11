@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import "./TasksForm.css"
 
-import { ListTodo, FileText, Plus } from "lucide-react";
+import { ListTodo, FileText, Plus, Save } from "lucide-react";
 
 function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}) {
 
@@ -69,7 +69,8 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
             <div className="form__buttons-container">
                 <button className="form__button-add" type="submit" disabled={loading.operation === "update"}>
-                    <Plus className="add-icon"/>
+                    <Save className={`save-icon ${editingTask ? "editing" : ""}`}/>
+                    <Plus className={`add-icon ${editingTask ? "editing" : ""}`} />
                 {loading.operation === "update"
                     ? "Atualizando..."
                     : editingTask
