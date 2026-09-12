@@ -1,0 +1,10 @@
+.tasks_list{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.list_title{
+    font-size: 3rem;
+    text-align: center;
+}
