@@ -1,12 +1,12 @@
 import TasksCard from "../TasksCard/TasksCard"
 import "./TasksList.css"
+import TasksSummary from "../TasksSummary/TasksSummary"
 
 function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onToggleTask, error}){
 
     return(
         <section className="tasks_list">
-
-            <h2 className="list_title">Tasks</h2>
+          
 
             {tasks.length === 0 && !error && loading.operation !== "get"? (
                 <p>Nenhuma tarefa cadastrada.</p>

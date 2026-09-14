@@ -1,8 +1,27 @@
+.tasks__summary{
+    width: 100%;
+}
+
 .tasks__summary-container{
+    max-width: 100%;
+    white-space: nowrap;
     display: flex;
-    width: 100%; 
-    justify-content:space-between;
-    padding: 10px 30px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.summary-title{
+    font-size: 1.4rem;
+}
+
+.summary-infos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
 }
 
 .tasks-total,
@@ -12,38 +31,33 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
+
+    border-radius: 40px;
+    padding: 6px 24px;
+    font-size: 0.8rem;
 }
 
 .tasks-total{
     background-color: var(--summary-total-background);
-    border-radius: 40px;
-    padding: 10px 40px;
 }
 
 .total-title, .total-number{
     color: var(--summary-total-text);
-    font-size: 1.1rem;
 }
 
 .tasks-pending{
     background-color: var(--summary-pending-background);
-    border-radius: 40px;
-    padding: 10px 40px;
 }
 
 .pending-title, .pending-number{
     color: var(--summary-pending-text);
-    font-size: 1.1rem;
 }
 
 .tasks-completed{
     background-color: var(--summary-completed-background);
-    border-radius: 40px;
-    padding: 10px 40px;
 }
 
 .completed-title, .completed-number{
     color: var(--summary-completed-text);
-    font-size: 1.1rem;
 }
 
