@@ -1,0 +1,65 @@
+.tasks__card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+
+    padding: 20px 40px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background-color: var(--surface);
+}
+
+.card__header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card__button-checkbox {
+    display: none;
+}
+
+.card__checkbox-custom {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1.6px solid var(--border);
+    background-color: var(--white);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.card__icon-checkbox{
+    color: var(--white);
+    transition: 0.5s;
+    display: none;
+}
+
+.card__button-checkbox:checked + .card__checkbox-custom {
+    background-color: var(--completed);
+}
+
+.card__button-checkbox:checked + .card__checkbox-custom svg {
+    display: block;
+}
+
+.tasks__card:has(.card__button-checkbox:checked) {
+    background-color: var(--completed-background);
+    border-color: var(--completed-border);
+}
+
+.card__title{
+    font-size: 1.2rem;
+}
+
+.card__title.completed{
+    text-decoration: line-through;
+}
+

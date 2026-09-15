@@ -22,6 +22,11 @@
 
     --summary-pending-background: #FFEDD5;
     --summary-pending-text: #EA580C;
+
+    --completed: #16A34A;
+    --completed-background: #DCFCE7;
+    --completed-border: #86EFAC;
+    
     --white: #ffffff;
 
     --font-primary: "Inter", sans-serif;
