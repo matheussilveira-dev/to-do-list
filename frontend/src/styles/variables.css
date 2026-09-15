@@ -26,7 +26,13 @@
     --completed: #16A34A;
     --completed-background: #DCFCE7;
     --completed-border: #86EFAC;
-    
+
+    --edit: #2563EB;
+    --edit-background: #EFF6FF;
+
+    --delete: #DC2626;
+    --delete-background: #FEF2F2;
+
     --white: #ffffff;
 
     --font-primary: "Inter", sans-serif;

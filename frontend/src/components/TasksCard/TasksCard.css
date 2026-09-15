@@ -59,7 +59,55 @@
     font-size: 1.2rem;
 }
 
-.card__title.completed{
+.card__title.completed,
+.card__description.completed{
     text-decoration: line-through;
+}
+
+.card__description{
+    font-size: 0.9rem;
+}
+
+.card__buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.card__button-edit,
+.card__button-delete{
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.icon-edit,
+.icon-delete{
+    width: 18px;
+    height: 18px;
+    
+}
+
+.icon-edit{
+    color: var(--edit);
+    background-color: var(--edit-background);
+}
+
+.icon-delete{
+    color: var(--delete);
+    background-color: var(--delete-background);
+}
+
+.card__loading-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
