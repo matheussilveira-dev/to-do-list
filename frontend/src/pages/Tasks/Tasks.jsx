@@ -4,6 +4,7 @@ import axios from "axios";
 import TasksForm from "../../components/TasksForm/TasksForm"
 import TasksList from "../../components/TasksList/TasksList"
 import TasksSummary from "../../components/TasksSummary/TasksSummary";
+import FeedbackMessage from "../../components/FeedbackMessage/FeedbackMessage";
 
 import "./Tasks.css"
 
@@ -243,9 +244,17 @@ function Tasks() {
                 onCancelEdit={handleCancelEdit}
             />
             
-            {error && <p>{error}</p>}
-            {loading.operation === 'get' && <p className="load__loading-tasks">Carregando tarefas...</p>}
-            {loading.operation === "create" && <p className="load__add-tasks">Adicionando tarefa...</p>}
+            {error && <FeedbackMessage message={error} type="error"/>}
+            {loading.operation === 'get' && 
+            <FeedbackMessage
+                message="Carregando tarefas..."
+                type="loading"
+            />}
+            {loading.operation === "create" && 
+            <FeedbackMessage
+                message="Adicionando tarefa..."
+                type="loading"
+            />} 
 
             <TasksSummary
                 totalTasks={totalTasks}
