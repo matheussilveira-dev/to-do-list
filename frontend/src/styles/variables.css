@@ -33,6 +33,22 @@
     --delete: #DC2626;
     --delete-background: #FEF2F2;
 
+    --feedback-error-background: #FEF2F2;
+    --feedback-error-text: #DC2626;
+    --feedback-error-border: #FECACA;
+
+    --feedback-loading-background: #EFF6FF;
+    --feedback-loading-text: #2563EB;
+    --feedback-loading-border: #BFDBFE;
+
+    --feedback-empty-background: #F8FAFC;
+    --feedback-empty-text: #64748B;
+    --feedback-empty-border: #CBD5E1;
+
+    --feedback-success-background: #F0FDF4;
+    --feedback-success-text: #16A34A;
+    --feedback-success-border: #BBF7D0;
+
     --white: #ffffff;
 
     --font-primary: "Inter", sans-serif;

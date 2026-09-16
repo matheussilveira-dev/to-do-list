@@ -1,0 +1,34 @@
+.feedback-message {
+    padding: 15px 22.5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feedback-message.error{
+    background-color: var(--feedback-error-background);
+    border: 1px solid var(--feedback-error-border);
+    color: var(--feedback-error-text);
+}
+
+.feedback-message.loading{
+    background-color: var(--feedback-loading-background);
+    border: 1px solid var(--feedback-loading-border);
+    color: var(--feedback-loading-text);
+}
+
+.feedback-message.empty{
+    background-color: var(--feedback-empty-background);
+    border: 1px solid var(--feedback-empty-border);
+    color: var(--feedback-empty-text);
+}
+
+.feedback-message svg {
+    width: 20px;
+    height: 20px;
+}
+
+.feedback-message.loading svg {
+    animation: spin 1s linear infinite;
+}

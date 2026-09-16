@@ -1,6 +1,7 @@
 import TasksCard from "../TasksCard/TasksCard"
 import "./TasksList.css"
 import TasksSummary from "../TasksSummary/TasksSummary"
+import FeedbackMessage from "../FeedbackMessage/FeedbackMessage"
 
 function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onToggleTask, error}){
 
@@ -9,7 +10,7 @@ function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onTog
           
 
             {tasks.length === 0 && !error && loading.operation !== "get"? (
-                <p>Nenhuma tarefa cadastrada.</p>
+                <FeedbackMessage message="Nenhuma tarefa cadastrada." type="empty"/>
             ) : (
                 tasks.map(task => (
                 <TasksCard
