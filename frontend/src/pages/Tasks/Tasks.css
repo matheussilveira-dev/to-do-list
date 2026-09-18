@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.main__content {
+    width: 700px;
+}
+
 .main__title-box{
   display: flex;
   justify-content: center;

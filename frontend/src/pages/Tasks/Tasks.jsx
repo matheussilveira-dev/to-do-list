@@ -225,52 +225,54 @@ function Tasks() {
     return(
         <main className="main">
             <div className="main__container">
-                <div className="main__title-box">
-                    <div className="icon">
-                        <CircleCheckBig className="title-icon"/>
+                <div className="main__content">
+                    <div className="main__title-box">
+                        <div className="icon">
+                            <CircleCheckBig className="title-icon"/>
+                        </div>
+                        <div className="title-main">
+                            <h1 className="tasks_title">Minhas tarefas</h1>
+                            <p className="tasks_text-description">Organize seu dia, conquiste suas metas.</p>
+                        </div>
                     </div>
-                    <div className="title-main">
-                        <h1 className="tasks_title">Minhas tarefas</h1>
-                        <p className="tasks_text-description">Organize seu dia, conquiste suas metas.</p>
-                    </div>
+                    
+                    
+                                <TasksForm
+                    onAddTask={handleAddTask}
+                    editingTask={editingTask}
+                    onUpdateTask={handleUpdateTask}
+                    loading={loading}
+                    onCancelEdit={handleCancelEdit}
+                                />
+                                
+                                {error && <FeedbackMessage message={error} type="error"/>}
+                                {loading.operation === 'get' && 
+                                <FeedbackMessage
+                    message="Carregando tarefas..."
+                    type="loading"
+                                />}
+                                {loading.operation === "create" && 
+                                <FeedbackMessage
+                    message="Adicionando tarefa..."
+                    type="loading"
+                                />} 
+                    
+                                <TasksSummary
+                    totalTasks={totalTasks}
+                    pendingTasks={pendingTasks}
+                    completedTasks={completedTasks}
+                                />
+                    
+                                <TasksList
+                    tasks={tasks}
+                    onEditTask={handleEditTask}
+                    onDeleteTask={handleDeleteTask}
+                    loading={loading}
+                    editingTask={editingTask}
+                    onToggleTask={handleToggleTask}
+                    error={error}
+                                />
                 </div>
-                
-
-            <TasksForm 
-                onAddTask={handleAddTask}
-                editingTask={editingTask}
-                onUpdateTask={handleUpdateTask}
-                loading={loading}
-                onCancelEdit={handleCancelEdit}
-            />
-            
-            {error && <FeedbackMessage message={error} type="error"/>}
-            {loading.operation === 'get' && 
-            <FeedbackMessage
-                message="Carregando tarefas..."
-                type="loading"
-            />}
-            {loading.operation === "create" && 
-            <FeedbackMessage
-                message="Adicionando tarefa..."
-                type="loading"
-            />} 
-
-            <TasksSummary
-                totalTasks={totalTasks}
-                pendingTasks={pendingTasks}
-                completedTasks={completedTasks}
-            />
-
-            <TasksList
-                tasks={tasks}
-                onEditTask={handleEditTask}
-                onDeleteTask={handleDeleteTask}
-                loading={loading}
-                editingTask={editingTask}
-                onToggleTask={handleToggleTask}
-                error={error}
-            />
             </div>
         </main>
     )
