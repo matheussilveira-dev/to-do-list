@@ -66,6 +66,27 @@
 
 .card__description{
     font-size: 0.9rem;
+    padding-right: 10px;
+    max-height: 3.6em;
+    width: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+}
+
+.card__description.expanded {
+    display: block;
+}
+
+.card__description-toggle {
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 0.85rem;
 }
 
 .card__buttons{

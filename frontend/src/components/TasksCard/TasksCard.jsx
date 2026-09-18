@@ -1,9 +1,27 @@
 import "./TasksCard.css"
+import { useState, useRef, useEffect } from "react";
 
 import { Check, Pencil, Trash2, LoaderCircle} from "lucide-react";
 
 function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onToggleTask}){
 
+    const [expanded, setExpanded] = useState(false);
+    const [hasMore, setHasMore] = useState(false);
+    const descriptionRef = useRef(null);
+
+    function hasMoreDescription() {
+    if (!descriptionRef.current) return false;
+
+    return descriptionRef.current.scrollHeight >
+           descriptionRef.current.clientHeight;
+    }
+
+    useEffect(() => {
+    if (!descriptionRef.current || expanded) return;
+
+    setHasMore(hasMoreDescription());
+
+    }, [task.description, expanded]);
     
     return(
         <article className="tasks__card">
@@ -24,7 +42,24 @@ function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onTogg
                 </label>
                 <div className="card__informations">
                     <h2 className={`card__title ${task.completed ? "completed" : ""}`}>{task.title}</h2>
-                    <p className={`card__description ${task.completed ? "completed" : ""}`}>{task.description}</p>
+                    <p 
+                    ref={descriptionRef}
+                    className={`card__description ${task.completed ? "completed" : ""} ${expanded ? "expanded" : ""}`}>{task.description}</p>
+                    {hasMore && (
+                        expanded ? (
+                            <button 
+                            className="card__description-toggle"
+                            onClick={() => setExpanded(false)}>
+                                Mostrar menos
+                            </button>
+                        ) : (
+                            <button 
+                            className="card__description-toggle"
+                            onClick={() => setExpanded(true)}>
+                                ...
+                            </button>
+                        )
+                    )}
                 </div>
             </div>
 
