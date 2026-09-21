@@ -13,7 +13,7 @@ export const taskIdSchema = z.object({
         })
 });
 
-export const createTaskSchema = z.object({
+const taskSchema = z.object({
     title: z
         .string({
             error: 'O título deve ser uma string!'
@@ -35,8 +35,17 @@ export const createTaskSchema = z.object({
         .boolean({
             error: 'Completed deve ser true ou false'
         })
+});
+
+export const createTaskSchema = taskSchema.extend({
+    completed: z
+        .boolean({
+            error: 'Completed deve ser true ou false'
+        })
         .default(false)
         .optional()
-})
+});
 
-export const updateTaskSchema = createTaskSchema.partial();
+
+
+export const updateTaskSchema = taskSchema.partial();
