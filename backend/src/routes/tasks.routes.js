@@ -4,7 +4,7 @@ import tasksController from '../controllers/tasks.controller.js'
 import { taskIdSchema, createTaskSchema, updateTaskSchema } from '../validators/tasks.validator.js'
 import { validate } from '../middleware/validate.middleware.js'
 
-const router = express()
+const router = express.Router()
 
 router.get('/', tasksController.getAll)
 router.get('/:id', validate(taskIdSchema, 'params'), tasksController.getById)
