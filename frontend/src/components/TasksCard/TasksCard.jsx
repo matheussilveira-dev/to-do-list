@@ -44,7 +44,7 @@ function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onTogg
                     <h2 className={`card__title ${task.completed ? "completed" : ""}`}>{task.title}</h2>
                     <p 
                     ref={descriptionRef}
-                    className={`card__description ${task.completed ? "completed" : ""} ${expanded ? "expanded" : ""}`}>{task.description}</p>
+                    className={`card__description ${task.completed ? "completed" : ""} ${expanded ? "expanded" : ""}`}>{task.description ?? ""}</p>
                     {hasMore && (
                         expanded ? (
                             <button 

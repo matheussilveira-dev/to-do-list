@@ -36,7 +36,7 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
         if (editingTask) {
             setTitle(editingTask.title);
-            setDescription(editingTask.description);
+            setDescription(editingTask.description ?? "");
         }else{
             setTitle("");
             setDescription("");
