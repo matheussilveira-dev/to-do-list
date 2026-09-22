@@ -80,8 +80,17 @@ function Tasks() {
             return true;
 
         } catch (error) {
-            setError("Não foi possível adicionar a nova tarefa!")
+            
+            const message = error.response?.data?.error
+
+            setError(
+                Array.isArray(message)
+                    ? message.join(" ")
+                    : "Não foi possível adicionar a nova tarefa!"
+            )
+
             return false;
+
         }finally{
             setLoading({
                 operation: null,
