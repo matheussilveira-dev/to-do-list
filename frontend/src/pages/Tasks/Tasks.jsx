@@ -124,8 +124,7 @@ function Tasks() {
             )
         )
 
-        setEditingTask(null)
-
+        
         setError(null)
         return true
 
@@ -135,6 +134,7 @@ function Tasks() {
             return false
 
         }finally{
+            setEditingTask(null)
             setLoading({
                 operation: null,
                 id: null
