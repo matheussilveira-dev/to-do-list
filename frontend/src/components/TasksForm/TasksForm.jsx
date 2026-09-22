@@ -68,14 +68,16 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
             </div>
 
             <div className="form__buttons-container">
-                <button className="form__button-add" type="submit" disabled={loading.operation === "update"}>
+                <button className="form__button-add" type="submit" disabled={loading.operation === "create" || loading.operation === "update"}>
                     <Save className={`save-icon ${editingTask ? "editing" : ""}`}/>
                     <Plus className={`add-icon ${editingTask ? "editing" : ""}`} />
-                {loading.operation === "update"
-                    ? "Atualizando..."
-                    : editingTask
-                        ? "Atualizar tarefa"
-                        : "Adicionar tarefa"}
+                {loading.operation === "create"
+                    ? "Adicionando..."
+                    : loading.operation === "update"
+                        ? "Atualizando..."
+                        : editingTask
+                            ? "Atualizar tarefa"
+                            : "Adicionar tarefa"}
                 </button>
                 <button className={`form__button-clear ${editingTask ? "editing" : ""}`} onClick={editingTask ? onCancelEdit : clearForm} type="button">
                     {editingTask ? "Cancelar" : "Limpar"}
