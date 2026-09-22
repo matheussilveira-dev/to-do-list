@@ -27,15 +27,31 @@ class TasksService {
     async update(id, data){
 
         const task = new Task(data)
-        
 
-        return await tasksRepository.update(id, task)
+        const updatedTask = await tasksRepository.update(id, task)
+
+        if (!updatedTask) {
+            const error = new Error(`A task com o ID ${id} não foi encontrada.`)
+            error.status = 404
+            throw error
+        }
+
+        return updatedTask
+
     }
 
     async deleteTask(id){
-        const removeTask = await tasksRepository.deleteTask(id)
+        
+    const removeTask = await tasksRepository.deleteTask(id)
 
-        return removeTask
+    if (removeTask.affectedRows === 0) {
+        const error = new Error(`A task com o ID ${id} não foi encontrada.`)
+        error.status = 404
+        throw error
+    }
+
+    return removeTask
+
     }
 }
 
