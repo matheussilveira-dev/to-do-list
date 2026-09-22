@@ -5,8 +5,6 @@ export const validate = (schema, location) => {
 
         const result = schema.safeParse(data)
 
-        console.log(result)
-
         if(!result.success){
             return res.status(400).json({
                 error: result.error.issues.map(issue => issue.message)
