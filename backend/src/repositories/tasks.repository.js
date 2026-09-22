@@ -19,7 +19,7 @@ class TasksRepository{
             completed
         } = task
 
-        const [result] = await pool.query('INSERT INTO tasks(title, description, completed) VALUES (?, ?, ?)', [title, description, completed])
+        const [result] = await pool.query('INSERT INTO tasks(title, description, completed) VALUES (?, ?, ?)', [title, description ?? null, completed])
 
         return await this.getById(result.insertId)
     }
@@ -36,7 +36,7 @@ class TasksRepository{
 
     if (Object.hasOwn(task, "description")) {
         fields.push("description = ?");
-        values.push(task.description);
+        values.push(task.description ?? null);
     }
 
     if (Object.hasOwn(task, "completed")) {
