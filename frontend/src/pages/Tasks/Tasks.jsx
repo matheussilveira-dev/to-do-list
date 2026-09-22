@@ -56,6 +56,15 @@ function Tasks() {
     
     }, []);
 
+    useEffect(() => {
+    if (!error) return;
+
+    const timer = setTimeout(() => {
+        setError(null);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+}, [error]);
 
     async function handleAddTask(title, description) {
         setLoading({
