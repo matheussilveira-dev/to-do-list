@@ -148,7 +148,14 @@ function Tasks() {
 
         } catch (error) {
             
-            setError("Não foi possível atualizar a tarefa!")
+            const message = error.response?.data?.error
+
+            setError(
+                Array.isArray(message)
+                    ? message.join(" ")
+                    : "Não foi possível atualizar a tarefa!"
+            )
+
             return false
 
         }finally{
