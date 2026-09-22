@@ -43,7 +43,6 @@ export const createTaskSchema = taskSchema.extend({
             error: 'Completed deve ser true ou false'
         })
         .default(false)
-        .optional()
 });
 
 
