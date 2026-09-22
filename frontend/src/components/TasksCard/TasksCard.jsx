@@ -66,14 +66,11 @@ function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onTogg
 
             <div className="card__buttons">
                 <button
-                    className="card__button-edit"
+                    className={`card__button-edit ${editingTask?.id === task.id ? "editing" : ""}`}
                     onClick={() => onEditTask(task)}
+                    disabled={loading.operation === "update"}
                 >
-                    {editingTask?.id === task.id ? (
-                        <LoaderCircle className="card__loading-icon"/>
-                    ) : (
-                        <Pencil className="icon-edit"/>
-                    )}
+                    <Pencil className={`icon-edit ${editingTask?.id === task.id ? "editing" : ""}`} />
                 </button>
                 <button
                     className="card__button-delete"

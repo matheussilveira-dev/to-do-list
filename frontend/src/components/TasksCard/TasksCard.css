@@ -119,6 +119,26 @@
     background-color: var(--delete-background);
 }
 
+.card__button-edit.editing {
+    color: var(--edit);
+    background-color: var(--edit-background);
+    transform: scale(1.1);
+}
+
+.icon-edit.editing {
+    animation: editPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes editPulse {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+}
+
 .card__loading-icon {
     width: 18px;
     height: 18px;
