@@ -47,4 +47,8 @@ export const createTaskSchema = taskSchema.extend({
 
 
 
-export const updateTaskSchema = taskSchema.partial();
+export const updateTaskSchema = taskSchema
+    .partial()
+    .refine(data => Object.keys(data).length > 0, {
+        error: "Informe pelo menos um campo para atualizar!"
+    });
