@@ -9,10 +9,13 @@ class TasksService {
     }
 
     async getById(id) {
+
         const task = await tasksRepository.getById(id);
 
-        if(!task) {
-            throw new Error(`A task com o ID ${id} não foi encontrada.`);
+        if (!task) {
+            const error = new Error(`A task com o ID ${id} não foi encontrada.`);
+            error.status = 404;
+            throw error;
         }
 
         return task;
