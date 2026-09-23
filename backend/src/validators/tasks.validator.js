@@ -18,6 +18,7 @@ const taskSchema = z.object({
         .string({
             error: 'O título deve ser uma string!'
         })
+        .trim()
         .min(1, {
             error: 'O título é obrigatório!'
         })
