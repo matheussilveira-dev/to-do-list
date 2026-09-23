@@ -3,7 +3,7 @@ import pool from "../database/connection.js";
 class TasksRepository{
 
     async getAll() {
-        const [rows] = await pool.query('SELECT * FROM tasks')
+        const [rows] = await pool.query('SELECT * FROM tasks ORDER BY created_at DESC')
         return rows
     }
 

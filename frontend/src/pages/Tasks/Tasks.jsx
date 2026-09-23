@@ -81,8 +81,8 @@ function Tasks() {
             )
 
             setTasks([
-                ...tasks,
-                response.data.data
+                response.data.data,
+                ...tasks
             ])
 
             setError(null)
