@@ -1,5 +1,5 @@
 import "./FeedbackMessage.css"
-import { CircleAlert, LoaderCircle, Inbox } from "lucide-react";
+import { CircleAlert, LoaderCircle, Inbox, CircleCheck } from "lucide-react";
 
 function FeedbackMessage({message, type}) {
 
@@ -11,6 +11,8 @@ function FeedbackMessage({message, type}) {
         Icon = LoaderCircle;
     } else if (type === "empty") {
         Icon = Inbox;
+    } else if (type === "success") {
+        Icon = CircleCheck
     }
 
     return(

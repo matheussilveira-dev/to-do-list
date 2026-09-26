@@ -14,6 +14,7 @@ function Tasks() {
 
     const [tasks, setTasks] = useState([])
     const [editingTask, setEditingTask] = useState(null);
+    const [feedback, setFeedback] = useState(null)
 
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState({
@@ -64,7 +65,17 @@ function Tasks() {
     }, 4000);
 
     return () => clearTimeout(timer);
-}, [error]);
+    }, [error]);
+
+    useEffect(() => {
+        if (!feedback) return;
+
+        const timer = setTimeout(() => {
+            setFeedback(null);
+        }, 4000);
+
+        return () => clearTimeout(timer);
+    }, [feedback]);
 
     async function handleAddTask(title, description) {
         setLoading({
@@ -86,12 +97,14 @@ function Tasks() {
             ])
 
             setError(null)
+            setFeedback("Tarefa criada com sucesso!")
             return true;
 
         } catch (error) {
             
             const message = error.response?.data?.error
 
+            setFeedback(null)
             setError(
                 Array.isArray(message)
                     ? message.join(" ")
@@ -144,12 +157,14 @@ function Tasks() {
 
         
         setError(null)
+        setFeedback("Tarefa atualizada com sucesso!")
         return true
 
         } catch (error) {
             
             const message = error.response?.data?.error
 
+            setFeedback(null)
             setError(
                 Array.isArray(message)
                     ? message.join(" ")
@@ -280,7 +295,10 @@ function Tasks() {
                                 <FeedbackMessage
                     message="Adicionando tarefa..."
                     type="loading"
-                                />} 
+                                />}
+                                {feedback && <FeedbackMessage message={feedback} type="success"/> }
+
+                                
                     
                                 <TasksSummary
                     totalTasks={totalTasks}
