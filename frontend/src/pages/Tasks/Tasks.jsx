@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from "axios";
+import { api } from "../../services/api";
 
 import TasksForm from "../../components/TasksForm/TasksForm"
 import TasksList from "../../components/TasksList/TasksList"
@@ -36,7 +36,7 @@ function Tasks() {
             });
             try {
 
-                const response = await axios.get('http://localhost:3010/tasks')
+                const response = await api.get('http://localhost:3010/tasks')
                 
 
                 setTasks(response.data)
@@ -84,7 +84,7 @@ function Tasks() {
         });
         try {
             
-            const response = await axios.post("http://localhost:3010/tasks", 
+            const response = await api.post("http://localhost:3010/tasks", 
                 {
                     title: title,
                     description: description
@@ -137,7 +137,7 @@ function Tasks() {
         });
         try {
             
-            const response = await axios.put(
+            const response = await api.put(
         `http://localhost:3010/tasks/${editingTask.id}`,
             {
                 title,
@@ -196,7 +196,7 @@ function Tasks() {
         })
         try {
             
-            await axios.delete(
+            await api.delete(
             `http://localhost:3010/tasks/${id}`
             );
 
@@ -229,7 +229,7 @@ function Tasks() {
 
         try {
             
-            const response = await axios.put(
+            const response = await api.put(
             `http://localhost:3010/tasks/${id}`,
             {
                 completed: completed
