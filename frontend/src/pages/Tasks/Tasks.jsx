@@ -10,6 +10,7 @@ import "./Tasks.css"
 
 import { CircleCheckBig } from "lucide-react";
 
+
 function Tasks() {
 
     const [tasks, setTasks] = useState([])
@@ -163,7 +164,7 @@ function Tasks() {
         } catch (error) {
             
             const message = error.response?.data?.error
-
+            
             setFeedback(null)
             setError(
                 Array.isArray(message)
@@ -209,7 +210,16 @@ function Tasks() {
 
         } catch (error) {
             
-            setError("Não foi possível excluir essa tarefa!")
+            const message = error.response?.data?.error
+            
+            setFeedback(null)
+            setError(
+                Array.isArray(message)
+                    ? message.join(" ")
+                    : "Não foi possível excluir a tarefa!"
+            )
+
+            return false
 
         }finally{
             setLoading({
