@@ -205,6 +205,7 @@ function Tasks() {
             );
 
             setError(null)
+            setFeedback("Tarefa excluída com sucesso!")
 
         } catch (error) {
             
