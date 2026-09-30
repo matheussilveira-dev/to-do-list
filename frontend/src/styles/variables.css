@@ -1,55 +1,161 @@
 :root {
-    --primary: #0F766E;
+  /* =========================
+     PRIMARY
+  ========================= */
+  --primary: #0F766E;
+  --primary-hover: #115E59;
+  --primary-active: #134E4A;
+  --primary-soft: #CCFBF1;
+  --primary-focus: rgba(20, 184, 166, 0.25);
 
-    --text-primary: #134E4A;
-    --text-secondary: #64748B;
-    --text-button: #475569;
 
-    --success: #22C55E;
-    --warning: #F59E0B;
-    --danger: #EF4444;
+  /* =========================
+     TEXT
+  ========================= */
+  --text-primary: #134E4A;
+  --text-secondary: #64748B;
+  --text-button: #475569;
+  --text-disabled: #94A3B8;
 
-    --background: #F0FDFA;
-    --background-button-clear: #E2E8F0;
-    --surface: #F8FAFC;
-    --border: #CBD5E1;
 
-     --summary-total-background: #DBEAFE;
-    --summary-total-text: #0F766E;
+  /* =========================
+     STATES
+  ========================= */
+  --success: #22C55E;
+  --success-hover: #16A34A;
 
-    --summary-completed-background: #DCFCE7;
-    --summary-completed-text: #16A34A;
+  --warning: #F59E0B;
+  --warning-hover: #D97706;
 
-    --summary-pending-background: #FFEDD5;
-    --summary-pending-text: #EA580C;
+  --danger: #EF4444;
+  --danger-hover: #DC2626;
 
-    --completed: #16A34A;
-    --completed-background: #DCFCE7;
-    --completed-border: #86EFAC;
 
-    --edit: #2563EB;
-    --edit-background: #EFF6FF;
+  /* =========================
+     BACKGROUNDS
+  ========================= */
+  --background: #F0FDFA;
 
-    --delete: #DC2626;
-    --delete-background: #FEF2F2;
+  --surface: #F8FAFC;
+  --surface-hover: #F1F5F9;
 
-    --feedback-error-background: #FEF2F2;
-    --feedback-error-text: #DC2626;
-    --feedback-error-border: #FECACA;
+  --background-button-clear: #E2E8F0;
+  --background-button-clear-hover: #CBD5E1;
+  --background-button-clear-active: #94A3B8;
 
-    --feedback-loading-background: #EFF6FF;
-    --feedback-loading-text: #2563EB;
-    --feedback-loading-border: #BFDBFE;
 
-    --feedback-empty-background: #F8FAFC;
-    --feedback-empty-text: #64748B;
-    --feedback-empty-border: #CBD5E1;
+  /* =========================
+     BORDERS
+  ========================= */
+  --border: #CBD5E1;
+  --border-hover: #94A3B8;
+  --border-focus: #14B8A6;
 
-    --feedback-success-background: #F0FDF4;
-    --feedback-success-text: #16A34A;
-    --feedback-success-border: #BBF7D0;
 
-    --white: #ffffff;
+  /* =========================
+     DISABLED
+  ========================= */
+  --disabled-background: #E2E8F0;
+  --disabled-text: #94A3B8;
 
-    --font-primary: "Inter", sans-serif;
+
+  /* =========================
+     SUMMARY
+  ========================= */
+  --summary-total-background: #DBEAFE;
+  --summary-total-text: #0F766E;
+
+  --summary-completed-background: #DCFCE7;
+  --summary-completed-text: #16A34A;
+
+  --summary-pending-background: #FFEDD5;
+  --summary-pending-text: #EA580C;
+
+
+  /* =========================
+     COMPLETED
+  ========================= */
+  --completed: #16A34A;
+  --completed-hover: #15803D;
+
+  --completed-background: #DCFCE7;
+  --completed-background-hover: #BBF7D0;
+
+  --completed-border: #86EFAC;
+
+
+  /* =========================
+     EDIT
+  ========================= */
+  --edit: #2563EB;
+  --edit-hover: #1D4ED8;
+
+  --edit-background: #EFF6FF;
+  --edit-background-hover: #DBEAFE;
+
+
+  /* =========================
+     DELETE
+  ========================= */
+  --delete: #DC2626;
+  --delete-hover: #B91C1C;
+
+  --delete-background: #FEF2F2;
+  --delete-background-hover: #FEE2E2;
+
+
+  /* =========================
+     FEEDBACK - ERROR
+  ========================= */
+  --feedback-error-background: #FEF2F2;
+  --feedback-error-text: #DC2626;
+  --feedback-error-border: #FECACA;
+
+
+  /* =========================
+     FEEDBACK - LOADING
+  ========================= */
+  --feedback-loading-background: #EFF6FF;
+  --feedback-loading-text: #2563EB;
+  --feedback-loading-border: #BFDBFE;
+
+
+  /* =========================
+     FEEDBACK - EMPTY
+  ========================= */
+  --feedback-empty-background: #F8FAFC;
+  --feedback-empty-text: #64748B;
+  --feedback-empty-border: #CBD5E1;
+
+
+  /* =========================
+     FEEDBACK - SUCCESS
+  ========================= */
+  --feedback-success-background: #F0FDF4;
+  --feedback-success-text: #16A34A;
+  --feedback-success-border: #BBF7D0;
+
+
+  /* =========================
+     SHADOWS
+  ========================= */
+  --shadow-soft: rgba(15, 118, 110, 0.08);
+  --shadow-card: rgba(15, 23, 42, 0.08);
+  --shadow-hover: rgba(15, 118, 110, 0.14);
+
+
+  /* =========================
+     MOTION
+  ========================= */
+  --transition-fast: 150ms ease;
+  --transition-normal: 220ms ease;
+  --transition-slow: 350ms ease;
+
+
+  /* =========================
+     GENERAL
+  ========================= */
+  --white: #FFFFFF;
+
+  --font-primary: "Inter", sans-serif;
 }
