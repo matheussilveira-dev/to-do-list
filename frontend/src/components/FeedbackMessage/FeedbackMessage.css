@@ -4,12 +4,18 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
+    animation: feedbackEnter 250ms ease-out;
 }
 
 .feedback-message.error{
     background-color: var(--feedback-error-background);
     border: 1px solid var(--feedback-error-border);
     color: var(--feedback-error-text);
+
+    animation:
+        feedbackEnter 250ms ease-out,
+        errorShake 250ms ease 1;
 }
 
 .feedback-message.loading{
@@ -30,6 +36,10 @@
     color: var(--feedback-success-text);
 }
 
+.feedback-message.success svg {
+    animation: successPop 300ms ease;
+}
+
 .feedback-message svg {
     width: 20px;
     height: 20px;
@@ -38,6 +48,42 @@
 .feedback-message.loading svg {
     animation: spin 1s linear infinite;
 }
+
+/* =========================
+     ANIMAÇÕES
+  ========================= */
+
+@keyframes feedbackEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes successPop {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes errorShake {
+    25% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+}
+
+/* =========================
+     RESPONSIVIDADE
+  ========================= */
 
 
 @media (max-width: 800px) {

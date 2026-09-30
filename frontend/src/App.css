@@ -21,3 +21,30 @@ h1, h2, h3{
 p{
     color: var(--text-secondary);
 }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   GLOBAL BUTTON STATES
+========================= */
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* =========================
+   ACCESSIBILITY / FOCUS
+========================= */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-focus);
+}

@@ -14,6 +14,8 @@
 
 .main__content {
     width: 700px;
+
+    animation: pageEnter 450ms ease-out;
 }
 
 .main__title-box{
@@ -31,6 +33,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
 .title-icon{
@@ -43,6 +49,31 @@
 .tasks_title{
   font-size: clamp(1.8rem, 6vw, 2.5rem);
 }
+
+/* =========================
+     ANIMAÇÕES
+  ========================= */
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icon:hover {
+    transform: rotate(-4deg) scale(1.03);
+    box-shadow: 0 6px 16px var(--shadow-hover);
+}
+
+/* =========================
+     RESPONSIVIDADE
+  ========================= */
 
 @media (max-width: 800px) {
     .main__content {

@@ -11,6 +11,10 @@
     margin-bottom: 50px;
     width: 100%;
     gap: 20px;
+
+     transition:
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
 .form_title{
@@ -29,9 +33,13 @@
     color: var(--primary);
     width: 20px;
     height: 20px;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
-.icon_input-container{
+.icon_input-container {
     position: absolute;
     top: 50%;
     left: 8px;
@@ -39,16 +47,18 @@
     background-color: var(--surface);
     padding: 5px;
     border-radius: 5px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-
+    transition: background-color var(--transition-fast);
 }
 
 .icon_input-container:has(.description_input-icon) {
     top: 8px;
     transform: none;
+    padding: 3px 5px;
 }
 
 .form_input-title,
@@ -61,6 +71,13 @@
     font-family: var(--font-primary);
     font-size: 1.05rem;
     color: var(--text-primary);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast);
 }
 
 .form_input-description{
@@ -95,15 +112,33 @@
     border: none;
 }
 
-
-
 .form__button-add{
     background-color: var(--primary );
-    color: white;
+    color: var(--white);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.form__button-add:disabled {
+    background-color: var(--disabled-background);
+    color: var(--disabled-text);
+
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
 .add-icon, .save-icon{
-    color: white;
+    color: var(--white);
+
+    transition:
+        transform var(--transition-normal),
+        opacity var(--transition-normal);
 }
 
 .save-icon{
@@ -122,12 +157,84 @@
     background-color: var(--background-button-clear);
     color: var(--text-button);
     border: 1px solid var(--border);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
 .form__button-clear.editing{
-    background-color: #FEE2E2;
-    color: #B91C1C;
+    background-color: var(--delete-background-hover);
+    color: var(--delete-hover);
 }
+
+/* =========================
+     ANIMAÇÕES
+  ========================= */
+
+
+.tasks_form:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 8px 24px var(--shadow-soft);
+}
+
+.form_input-title:hover,
+.form_input-description:hover {
+    border-color: var(--border-hover);
+}
+
+.form_input-title:focus,
+.form_input-description:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px var(--primary-focus);   
+}
+
+.form__input-container:focus-within .title_input-icon,
+.form__input-container:focus-within .description_input-icon {
+    color: var(--primary-hover);
+    transform: scale(1.08);
+}
+
+.form__button-add:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px var(--shadow-hover);
+}
+
+.form__button-add:active:not(:disabled) {
+    background-color: var(--primary-active);
+    transform: translateY(0) scale(0.98);
+}
+
+.form__button-add:hover:not(:disabled) .add-icon {
+    transform: rotate(90deg);
+}
+
+.form__button-add:hover:not(:disabled) .save-icon {
+    transform: scale(1.1);
+}
+
+.form__button-clear:hover {
+    background-color: var(--background-button-clear-hover);
+    border-color: var(--border-hover);
+}
+
+.form__button-clear:active {
+    transform: scale(0.98);
+}
+
+.form__button-clear.editing:hover {
+    background-color: var(--delete);
+    color: var(--white);
+    border-color: var(--delete);
+}
+
+/* =========================
+     RESPONSIVIDADE
+  ========================= */
 
 @media (max-width: 800px) {
     .form__buttons-container {
