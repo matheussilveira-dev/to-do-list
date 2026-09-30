@@ -38,3 +38,10 @@
 .feedback-message.loading svg {
     animation: spin 1s linear infinite;
 }
+
+
+@media (max-width: 800px) {
+    .feedback-message {
+        width: 100%;
+    }
+}

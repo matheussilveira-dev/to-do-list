@@ -13,6 +13,10 @@
     gap: 20px;
 }
 
+.form_title{
+    font-size: clamp(1.25rem, 3vw, 1.4rem);
+}
+
 .form__input-container{
     position: relative;
     display: flex;
@@ -84,6 +88,8 @@
     align-items: center;
     gap: 10px;
 
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+
     padding: 10px 30px;
     border-radius: 5px;
     border: none;
@@ -94,7 +100,6 @@
 .form__button-add{
     background-color: var(--primary );
     color: white;
-    font-size: 1.05rem;
 }
 
 .add-icon, .save-icon{
@@ -116,11 +121,49 @@
 .form__button-clear{
     background-color: var(--background-button-clear);
     color: var(--text-button);
-    font-size: 1.05rem;
     border: 1px solid var(--border);
 }
 
 .form__button-clear.editing{
     background-color: #FEE2E2;
     color: #B91C1C;
+}
+
+@media (max-width: 800px) {
+    .form__buttons-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 570px) {
+    .tasks_form {
+        padding: 20px;
+    }
+
+    .form_input-title,
+    .form_input-description {
+        font-size: 0.95rem;
+    }
+
+    .form_input-title::placeholder,
+    .form_input-description::placeholder {
+        font-size: 0.95rem;
+    }
+
+    .add-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 450px) {
+    .tasks_form {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .add-icon {
+        width: 16px;
+        height: 16px;
+    }
 }

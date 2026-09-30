@@ -63,3 +63,41 @@
     color: var(--summary-completed-text);
 }
 
+@media (max-width: 800px) {
+    .tasks__summary-container {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .summary-infos {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .tasks-total,
+    .tasks-pending,
+    .tasks-completed {
+        padding: 6px 16px;
+    }
+}
+
+@media (max-width: 570px) {
+    .tasks__summary-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .summary-infos {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .tasks-total,
+    .tasks-pending,
+    .tasks-completed {
+        padding: 6px 12px;
+    }
+}
+

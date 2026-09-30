@@ -34,12 +34,66 @@
 }
 
 .title-icon{
-  width: 45px;
-  height: 45px;
+  width: clamp(32px, 8vw, 45px);
+    height: clamp(32px, 8vw, 45px);
   stroke-width: 2;
   color: var(--white);
 }
 
 .tasks_title{
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+}
+
+@media (max-width: 800px) {
+    .main__content {
+        width: 100%;
+    }
+
+    .main__container {
+        padding: 75px 30px;
+    }
+    
+    .tasks_title {
+        font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+    }
+
+    .title-icon {
+        width: clamp(30px, 7vw, 38px);
+        height: clamp(30px, 7vw, 38px);
+    }
+
+}
+
+@media (max-width: 570px) {
+  .main__container {
+        padding: 40px 30px;
+  }
+
+    .main__title-box {
+        gap: 8px;
+    }
+
+    .tasks_title {
+        font-size: clamp(1.7rem, 5.2vw, 1.9rem);
+    }
+
+    .title-icon {
+        width: clamp(28px, 6.5vw, 35px);
+        height: clamp(28px, 6.5vw, 35px);
+    }
+
+    .icon {
+        align-self: start;
+    }
+}
+
+@media (max-width: 450px) { 
+   .tasks_title {
+        font-size: 1.7rem;
+    }
+
+    .title-icon {
+        width: 30px;
+        height: 30px;
+    }
 }
