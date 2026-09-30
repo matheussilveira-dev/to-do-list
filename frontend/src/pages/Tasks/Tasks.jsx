@@ -251,7 +251,7 @@ function Tasks() {
         try {
             
             const response = await api.put(
-            `http://localhost:3010/tasks/${id}`,
+            `/tasks/${id}`,
             {
                 completed: completed
             }
