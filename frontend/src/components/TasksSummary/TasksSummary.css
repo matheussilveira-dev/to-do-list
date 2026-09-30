@@ -63,6 +63,10 @@
     color: var(--summary-completed-text);
 }
 
+/* =========================
+     RESPONSIVIDADE
+  ========================= */
+
 @media (max-width: 800px) {
     .tasks__summary-container {
         flex-wrap: wrap;
