@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import "./TasksForm.css"
 
 import { ListTodo, FileText, Plus, Save } from "lucide-react";
 
 function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}) {
 
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
+    const [title, setTitle] = useState(editingTask?.title ?? "")
+    const [description, setDescription] = useState(editingTask?.description ?? "")
 
     async function handleSubmit(event){
         event.preventDefault()
@@ -31,18 +31,6 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
         setDescription("")
         setTitle("")
     }
-
-    useEffect(() => {
-
-        if (editingTask) {
-            setTitle(editingTask.title);
-            setDescription(editingTask.description ?? "");
-        }else{
-            setTitle("");
-            setDescription("");
-        }
-
-    }, [editingTask]);
 
     return(
         <form className="tasks_form" onSubmit={handleSubmit}>

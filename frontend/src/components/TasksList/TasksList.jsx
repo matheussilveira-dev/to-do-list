@@ -1,6 +1,5 @@
 import TasksCard from "../TasksCard/TasksCard"
 import "./TasksList.css"
-import TasksSummary from "../TasksSummary/TasksSummary"
 import FeedbackMessage from "../FeedbackMessage/FeedbackMessage"
 
 function TasksList({tasks, onEditTask, onDeleteTask, loading, editingTask, onToggleTask, error}){

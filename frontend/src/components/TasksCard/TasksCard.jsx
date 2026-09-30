@@ -9,13 +9,6 @@ function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onTogg
     const [hasMore, setHasMore] = useState(false);
     const descriptionRef = useRef(null);
 
-    function hasMoreDescription() {
-    if (!descriptionRef.current) return false;
-
-    return descriptionRef.current.scrollHeight >
-           descriptionRef.current.clientHeight;
-    }
-
     useEffect(() => {
      if (!descriptionRef.current || expanded) return;
 

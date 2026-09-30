@@ -37,14 +37,25 @@ function Tasks() {
             });
             try {
 
-                const response = await api.get('http://localhost:3010/tasks')
+                const response = await api.get('/tasks')
                 
 
                 setTasks(response.data)
 
                 setError(null)
             } catch (error) {
-                setError("Não foi possível carregar as tarefas!")
+
+                const message = error.response?.data?.error
+            
+                setFeedback(null)
+                setError(
+                    Array.isArray(message)
+                        ? message.join(" ")
+                        : "Não foi possível carregar as tarefas!"
+                )
+
+                return false
+                
             }finally{
                 setLoading({
                     operation: null,
@@ -85,7 +96,7 @@ function Tasks() {
         });
         try {
             
-            const response = await api.post("http://localhost:3010/tasks", 
+            const response = await api.post("/tasks", 
                 {
                     title: title,
                     description: description
@@ -139,7 +150,7 @@ function Tasks() {
         try {
             
             const response = await api.put(
-        `http://localhost:3010/tasks/${editingTask.id}`,
+        `/tasks/${editingTask.id}`,
             {
                 title,
                 description
@@ -198,7 +209,7 @@ function Tasks() {
         try {
             
             await api.delete(
-            `http://localhost:3010/tasks/${id}`
+            `/tasks/${id}`
             );
 
             setTasks(
@@ -259,8 +270,17 @@ function Tasks() {
         setError(null)
 
         } catch (error) {
+
+            const message = error.response?.data?.error
             
-            setError("Não foi possível marcar essa tarefa como concluída!")
+            setFeedback(null)
+            setError(
+                Array.isArray(message)
+                    ? message.join(" ")
+                    : "Não foi possível marcar essa tarefa como concluída!"
+            )
+
+            return false
 
         } finally{
 
@@ -289,42 +309,43 @@ function Tasks() {
                     
                     
                                 <TasksForm
-                    onAddTask={handleAddTask}
-                    editingTask={editingTask}
-                    onUpdateTask={handleUpdateTask}
-                    loading={loading}
-                    onCancelEdit={handleCancelEdit}
+                                    key={editingTask?.id ?? "new"}
+                                    onAddTask={handleAddTask}
+                                    editingTask={editingTask}
+                                    onUpdateTask={handleUpdateTask}
+                                    loading={loading}
+                                    onCancelEdit={handleCancelEdit}
                                 />
                                 
                                 {error && <FeedbackMessage message={error} type="error"/>}
                                 {loading.operation === 'get' && 
                                 <FeedbackMessage
-                    message="Carregando tarefas..."
-                    type="loading"
+                                    message="Carregando tarefas..."
+                                    type="loading"
                                 />}
                                 {loading.operation === "create" && 
                                 <FeedbackMessage
-                    message="Adicionando tarefa..."
-                    type="loading"
+                                    message="Adicionando tarefa..."
+                                    type="loading"
                                 />}
                                 {feedback && <FeedbackMessage message={feedback} type="success"/> }
 
                                 
                     
                                 <TasksSummary
-                    totalTasks={totalTasks}
-                    pendingTasks={pendingTasks}
-                    completedTasks={completedTasks}
+                                    totalTasks={totalTasks}
+                                    pendingTasks={pendingTasks}
+                                    completedTasks={completedTasks}
                                 />
                     
                                 <TasksList
-                    tasks={tasks}
-                    onEditTask={handleEditTask}
-                    onDeleteTask={handleDeleteTask}
-                    loading={loading}
-                    editingTask={editingTask}
-                    onToggleTask={handleToggleTask}
-                    error={error}
+                                    tasks={tasks}
+                                    onEditTask={handleEditTask}
+                                    onDeleteTask={handleDeleteTask}
+                                    loading={loading}
+                                    editingTask={editingTask}
+                                    onToggleTask={handleToggleTask}
+                                    error={error}
                                 />
                 </div>
             </div>
