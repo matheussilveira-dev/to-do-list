@@ -46,7 +46,9 @@ function TasksForm({onAddTask, editingTask, onUpdateTask, loading, onCancelEdit}
 
     return(
         <form className="tasks_form" onSubmit={handleSubmit}>
-            <h2 className="form_title">Adicione uma nova tarefa!</h2>
+            <h2 className="form_title">
+                {editingTask ? "Atualize sua tarefa!": "Adicione uma nova tarefa!" }
+            </h2>
 
             <div className="form__input-container">
 
