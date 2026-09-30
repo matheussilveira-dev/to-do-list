@@ -17,10 +17,23 @@ function TasksCard({task, onEditTask, onDeleteTask, loading, editingTask, onTogg
     }
 
     useEffect(() => {
-    if (!descriptionRef.current || expanded) return;
+     if (!descriptionRef.current || expanded) return;
 
-    setHasMore(hasMoreDescription());
+    const element = descriptionRef.current;
 
+    function checkDescription() {
+        setHasMore(element.scrollHeight > element.clientHeight);
+    }
+
+    checkDescription();
+
+    const observer = new ResizeObserver(() => {
+        checkDescription();
+    });
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
     }, [task.description, expanded]);
     
     return(
